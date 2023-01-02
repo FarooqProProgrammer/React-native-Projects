@@ -1,20 +1,32 @@
-import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import Home from './src/pages/Home';
-import About from './src/pages/About';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import PickupScreen from './src/pages/Pickup'
+import DestinationScreen from './src/pages/Destination'
+import CarSelectionScreen from './src/pages/CarSelection'
+import RidesScreen from './src/pages/Rides'
 
-const Tab = createMaterialTopTabNavigator();
+const Stack = createNativeStackNavigator()
+const Drawer = createDrawerNavigator()
 
+function RidesNavigator() {
+    return (
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Pickup" component={PickupScreen} />
+            <Stack.Screen name="Destination" component={DestinationScreen} />
+            <Stack.Screen name="CarSelection" component={CarSelectionScreen} />
+        </Stack.Navigator>
+    );
+}
 
-export default function App() {
-  return (
-    <NavigationContainer>
-    <Tab.Navigator>
-          <Tab.Screen name="Home" component={Home} />
-          <Tab.Screen name="About" component={About} />
-      </Tab.Navigator>
-        
-    </NavigationContainer>
-  );
+export default function DrawerNavigator() {
+    return (
+        <NavigationContainer>
+            <Drawer.Navigator>
+                <Drawer.Screen name="Rides" component={RidesNavigator} />
+                {/* <Drawer.Screen name="RidesHistory" component={RidesScreen} /> */}
+             
+            </Drawer.Navigator>
+        </NavigationContainer>
+    );
 }
