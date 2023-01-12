@@ -57,7 +57,7 @@ function Ride({ navigation }) {
             </MapView>
 
             <Button
-                title="Booked My Ride"
+                title="Select Destination"
                 onPress={() => navigation.navigate('Destination', { location })}
             />
         </View>

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { View,Text,StyleSheet, Button } from "react-native";
+import { View,Text,StyleSheet, Button, Image, SafeAreaView, FlatList } from "react-native";
 import { useSelector } from "react-redux";
+import { cars } from "../../Apis/Cars";
 
-export default function AllRides(){
+export default function AllRides({navigation}){
   
     const [distance,setDistance] = useState();
     const Ride = useSelector(state => state)
@@ -39,7 +40,7 @@ export default function AllRides(){
 
 
     return(
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <View style={styles.Box}>
                 
                 <View style={styles.left}>
@@ -62,10 +63,29 @@ export default function AllRides(){
                         <Text style={styles.Text}> Select Your Desired Car</Text>
                     </View>
                     <View style={styles.AllCars}>
+                        <FlatList
+                            data={cars}
+                            renderItem={({item})=>{
+                                return (
+                                    <View style={styles.CarBox}>
+                                    <Image 
+                                    style={{width:50,height:50,borderRadius:50}}
+                                    source={{uri:item.image}}
+                                    />
+                                    <Text>{item.title}</Text>
+                                    <Button 
+                                        title="Select Car"
+                                        onPress={()=> navigation.navigate("Final")}
+                                    />
+                            </View>
+                                )
+                            }}
+                        />
 
+                         
                     </View>
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 
@@ -76,24 +96,22 @@ const styles = StyleSheet.create({
     Box:{
         width:350,
         height:200,
-        borderWidth:2,
+      
         borderRadius:4,
-        borderColor:"black",
+       
         flexDirection:"row",
         justifyContent:"center",
         alignItems:"center"
     },left:{
         flex:2,
-        borderWidth:2,
         height:200,
-        borderColor:"black",
+        
         justifyContent:"space-around",
         alignItems:"center"
     },Right:{
         flex:1,
-        borderWidth:2,
         height:200,
-        borderColor:"black",
+        
         justifyContent:"center",
         alignItems:"center"
     },Text:{
@@ -105,13 +123,19 @@ const styles = StyleSheet.create({
         alignItems:'center',
         height:200,
         borderWidth:4,
-        borderColor:"black",
+        
         overflow:"scroll"
     },AllCars:{
         flex:1,
         width:"100%",
-        borderWidth:2,
         borderColor:"black"
+    },
+    CarBox:{
+        height:100,
+        
+        flexDirection:"row",
+        justifyContent:'space-around',
+        alignItems:"center"
     }
 
 })

@@ -12,7 +12,7 @@ import Destination from "./src/Screens/HomeScreens/Destination";
 import AllRides from "./src/Screens/HomeScreens/All_books_Ride";
 import { Provider } from "react-redux";
 import { store } from "./src/store";
-
+import Final from "./src/Screens/HomeScreens/Final";
 const Tabs = createMaterialBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 function HomeScreen(){
@@ -23,7 +23,7 @@ function HomeScreen(){
         <Stack.Screen name="Ride" component={Ride}/>
         <Stack.Screen name="Destination" component={Destination}/>
         <Stack.Screen name="AllRides Details" component={AllRides}/>
-        
+        <Stack.Screen name="Final" component={Final}/>
       </Stack.Navigator>
   )
 }
