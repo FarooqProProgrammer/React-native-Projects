@@ -2,8 +2,13 @@ import { useEffect, useState } from 'react'
 import { View, Text, Button, StyleSheet } from 'react-native'
 import MapView, { Marker } from 'react-native-maps'
 import * as Location from 'expo-location'
+import { Destination_location_View } from '../../store/Action/Destination'
+import { useDispatch } from 'react-redux'
+import { Ride_Location } from '../../store/Action/locationAction'
 
 function Ride({ navigation }) {
+
+    const dispatch = useDispatch();
     const [location, setLocation] = useState({
         latitude: 24.8952922,
         longitude: 67.0823298,
@@ -30,16 +35,19 @@ function Ride({ navigation }) {
             }, (response) => {
                 const { coords: { latitude, longitude } } = response
                 setLocation({ ...location, latitude, longitude })
+                
             })
         })();
     }, []);
+    dispatch(Ride_Location(location))
 
-    console.log('location --->', location)
+    // console.log('location --->', location)
     return (
         <View>
             <MapView
                 region={location}
-                style={styles.map}>
+                style={styles.map}
+                onRegionChange={(location)=> setLocation(location)}>
 
                 <Marker
                     coordinate={location}
@@ -49,7 +57,7 @@ function Ride({ navigation }) {
             </MapView>
 
             <Button
-                title="Selection Destination"
+                title="Booked My Ride"
                 onPress={() => navigation.navigate('Destination', { location })}
             />
         </View>

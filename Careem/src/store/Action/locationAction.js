@@ -1,4 +1,5 @@
-function Location(location) {
+function Ride_Location(location) {
+    // console.log(location);
     return {
 
         type: 'SET_LOCATION',
@@ -10,5 +11,5 @@ function Location(location) {
 }
 
 export {
-    Location
+    Ride_Location
 }
