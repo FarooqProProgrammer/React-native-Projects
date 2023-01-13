@@ -72,7 +72,7 @@ export default function AllRides({navigation}){
                                     style={{width:50,height:50,borderRadius:50}}
                                     source={{uri:item.image}}
                                     />
-                                    <Text>{item.title}</Text>
+                                    <Text style={{color:"#fff"}}>{item.title}</Text>
                                     <Button 
                                         title="Select Car"
                                         onPress={()=> navigation.navigate("Final")}
@@ -92,6 +92,7 @@ export default function AllRides({navigation}){
 const styles = StyleSheet.create({
     container:{
         flex:1,
+        backgroundColor:"#3498db"
     },
     Box:{
         width:350,
@@ -116,19 +117,20 @@ const styles = StyleSheet.create({
         alignItems:"center"
     },Text:{
         fontSize:20,
-        fontWeight:"500"
+        fontWeight:"500",
+        color:"#fff",
+        fontWeight:"bold"
     },Car:{
         flex:1,
         justifyContent:"center",
         alignItems:'center',
         height:200,
-        borderWidth:4,
         
         overflow:"scroll"
     },AllCars:{
         flex:1,
         width:"100%",
-        borderColor:"black"
+       
     },
     CarBox:{
         height:100,
