@@ -1,7 +1,7 @@
 import { createStore } from "redux";
-import locationReducer from "./Reducer/locationReducer";
+import rootReducer from "./RootReducer";
 
-let store = createStore(locationReducer)
+let store = createStore(rootReducer)
 export {
     store
 }

@@ -13,7 +13,7 @@ export default function Home({navigation}){
                     <TouchableOpacity
                     style={{borderWidth:3,borderColor:"#fff",paddingLeft:10,paddingRight:10,paddingTop:15,paddingBottom:15}}
                     onPress={()=> navigation.navigate("Ride")}>
-                        <Text style={{fontSize:25,color:"#ffffff",fontWeight:"900"}}>Book My Ride</Text>
+                        <Text style={{fontSize:25,color:"#ffffff",fontWeight:"900"}}>Your Ride Partner</Text>
                     </TouchableOpacity>
                     
                 </View>
