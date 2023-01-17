@@ -2,40 +2,22 @@ import { useEffect, useState } from "react";
 import { View,Text,StyleSheet, Button, Image, SafeAreaView, FlatList } from "react-native";
 import { useSelector } from "react-redux";
 import { cars } from "../../Apis/Cars";
-
+import {getDistance} from 'geolib';
 export default function AllRides({navigation}){
   
-    const [distance,setDistance] = useState();
-    const Ride = useSelector(state => state)
-    console.log(Ride.location);
-    
-
-
-
-    const Destination = useSelector(state => state )
-    console.log(Destination.location);
+    // const [distance,setDistance] = useState();
+    const Ride = useSelector(state => state.Place.Destination_location.location)
+    const Destination = useSelector(state => state.Ride.location)
   
-    function deg2rad(deg) {
-        return deg * (Math.PI/180)
-    }
-
-
+   console.log(Ride);     
+// const distance = getDistance(
+//     { latitude: Ride.latitude, longitude:Ride.longitude },
+//     { latitude: Destination.latitude, longitude: Destination.longitude }
+//   );
+//   console.log(distance);
     
 
-    function getDistanceFromLatLonInKm(lat1, longi1, lat2, longi2) {
-        var R = 6371; // Radius of the earth in km
-        var dLat = deg2rad(lat2 -lat1);  // deg2rad below
-        var dLon = deg2rad(longi1 - longi2 ); 
-        var a = 
-          Math.sin(dLat/2) * Math.sin(dLat/2) +
-          Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
-          Math.sin(dLon/2) * Math.sin(dLon/2)
-          ; 
-        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-        var d = R * c; // Distance in km
-        console.log(d);
-        setDistance(d)
-      }
+ 
       
 
 
